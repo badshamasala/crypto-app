@@ -6,7 +6,7 @@ class BaseCurrency extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(colors: [
           Colors.black,
           Color(0xffb17164F),
@@ -35,6 +35,9 @@ class BaseCurrency extends StatelessWidget {
                 horizontal: 13.0,
               ),
               child: ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 leading: Icon(
                   base_currency_data[index]["icon"],
                   color: Colors.white,
@@ -46,7 +49,7 @@ class BaseCurrency extends StatelessWidget {
                 tileColor: Colors.grey[700],
                 subtitle: Text(
                   base_currency_data[index]["subTitle"],
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
             );
@@ -61,16 +64,16 @@ List<Map<String, dynamic>> base_currency_data = [
   {
     "title": "Manage Wallet",
     "icon": Icons.account_balance_wallet,
-    "subTitle": "Aubb",
+    "subTitle": "\$",
   },
   {
     "title": "Security Centre",
     "icon": Icons.security,
-    "subTitle": 'Aub',
+    "subTitle": '\$',
   },
   {
     "title": "Wallet connect",
     "icon": Icons.account_balance_wallet,
-    "subTitle": 'Aub',
+    "subTitle": '\$',
   },
 ];
