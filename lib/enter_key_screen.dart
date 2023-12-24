@@ -1,4 +1,5 @@
 import 'package:crypto_app/colors.dart';
+import 'package:crypto_app/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +21,14 @@ class _EnterKeyScreenState extends State<EnterKeyScreen> {
         backgroundColor: Colors.transparent,
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const HomeScreen(),
+                  ),
+                );
+              },
               child: Text(
                 "Next",
                 style: TextStyle(color: Colors.white),

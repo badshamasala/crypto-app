@@ -1,16 +1,25 @@
-import 'package:crypto_app/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ThemeScreen extends StatelessWidget {
-  const ThemeScreen({super.key});
+class SecurityCentreScreen extends StatefulWidget {
+  const SecurityCentreScreen({super.key});
+
+  @override
+  State<SecurityCentreScreen> createState() => _SecurityCentreScreenState();
+}
+
+class _SecurityCentreScreenState extends State<SecurityCentreScreen> {
+  bool password = false;
+  bool fingerprint = false;
+  bool faceRecognition = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text('Theme'),
+        title: const Text('Security centre'),
       ),
       backgroundColor: Colors.black,
       body: ListView.separated(
@@ -43,15 +52,43 @@ class ThemeScreen extends StatelessWidget {
                         : index == 1
                             ? 0
                             : 10.sp))),
-            leading: Icon(
-              theme_data[index]["icon"],
-              color: Colors.white,
-            ),
-            title: Text(
+            leading: Text(
               theme_data[index]["title"],
               style: const TextStyle(color: Colors.white, fontSize: 15),
             ),
-            tileColor: ColorConstants.listtitleColor,
+            trailing: Transform.scale(
+              scale: 0.5,
+              child: CupertinoSwitch(
+                  trackColor: Colors.grey,
+                  value: index == 0
+                      ? password
+                      : index == 1
+                          ? fingerprint
+                          : faceRecognition,
+                  onChanged: (value) {
+                    switch (index) {
+                      case 0:
+                        setState(() {
+                          password = !password;
+                        });
+                        break;
+
+                      case 1:
+                        setState(() {
+                          fingerprint = !fingerprint;
+                        });
+                        break;
+
+                      case 2:
+                        setState(() {
+                          faceRecognition = !faceRecognition;
+                        });
+                        break;
+
+                      default:
+                    }
+                  }),
+            ),
           );
         },
       ),
@@ -61,15 +98,12 @@ class ThemeScreen extends StatelessWidget {
 
 List<Map<String, dynamic>> theme_data = [
   {
-    "title": "Dark",
-    "icon": Icons.dark_mode,
+    "title": "Passcode",
   },
   {
-    "title": "Light",
-    "icon": Icons.light_mode,
+    "title": "FingerPrint",
   },
   {
-    "title": "System",
-    "icon": Icons.settings,
+    "title": "Face Recognition",
   },
 ];

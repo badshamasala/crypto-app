@@ -2,15 +2,15 @@ import 'package:crypto_app/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ThemeScreen extends StatelessWidget {
-  const ThemeScreen({super.key});
+class ManageWalletScreen extends StatelessWidget {
+  const ManageWalletScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text('Theme'),
+        title: const Text('Manage Wallet'),
       ),
       backgroundColor: Colors.black,
       body: ListView.separated(
@@ -61,15 +61,15 @@ class ThemeScreen extends StatelessWidget {
 
 List<Map<String, dynamic>> theme_data = [
   {
-    "title": "Dark",
-    "icon": Icons.dark_mode,
+    "title": "Create",
+    "icon": Icons.add,
   },
   {
-    "title": "Light",
-    "icon": Icons.light_mode,
+    "title": "Restore",
+    "icon": Icons.restore,
   },
   {
-    "title": "System",
-    "icon": Icons.settings,
+    "title": "Watch Address",
+    "icon": Icons.visibility,
   },
 ];
