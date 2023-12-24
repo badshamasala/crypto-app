@@ -9,6 +9,7 @@ class TransactionHistory extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(colors: [
+          Color.fromARGB(248, 2, 2, 42),
           Colors.black,
           Color(0xffb17164F),
         ], begin: Alignment.topLeft, end: Alignment.bottomRight),
@@ -63,6 +64,9 @@ class TransactionHistory extends StatelessWidget {
                         Text(
                           transaction_history_data[index]["transaction_id"],
                           style: TextStyle(color: Colors.white),
+                        ),
+                        Divider(
+                          color: Colors.white,
                         ),
                       ],
                     ),
