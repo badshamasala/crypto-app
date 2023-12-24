@@ -16,7 +16,7 @@ class _EnterKeyScreenState extends State<EnterKeyScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Enter Keey"),
+        title: Text("Enter Key"),
         backgroundColor: Colors.transparent,
         actions: [
           TextButton(
