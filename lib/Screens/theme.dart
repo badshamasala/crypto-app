@@ -32,6 +32,9 @@ class ThemeScreen extends StatelessWidget {
                 horizontal: 13.0,
               ),
               child: ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 leading: Icon(
                   theme_data[index]["icon"],
                   color: Colors.white,
@@ -40,7 +43,7 @@ class ThemeScreen extends StatelessWidget {
                   theme_data[index]["title"],
                   style: const TextStyle(color: Colors.white, fontSize: 15),
                 ),
-                tileColor: Color.fromARGB(255, 86, 80, 80),
+                tileColor: const Color.fromARGB(255, 86, 80, 80),
               ),
             );
           },

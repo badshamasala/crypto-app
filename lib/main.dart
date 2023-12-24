@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
               // is not restarted.
               primarySwatch: Colors.blue,
             ),
-            // home: const OnboardingScreen(),
-            home: Settings(),
+            home: const OnboardingScreen(),
+            // home: Settings(),
           );
         });
   }
