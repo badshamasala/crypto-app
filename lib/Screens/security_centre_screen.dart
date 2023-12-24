@@ -16,7 +16,7 @@ class _SecurityCentreScreenState extends State<SecurityCentreScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(  
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: const Text('Security centre'),

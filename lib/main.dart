@@ -1,3 +1,4 @@
+import 'package:crypto_app/Screens/transaction_history.dart';
 import 'package:crypto_app/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             // home: const OnboardingScreen(),
-            home: OnboardingScreen(),
+            // home: OnboardingScreen(),
+            home: TransactionHistory(),
           );
         });
   }
