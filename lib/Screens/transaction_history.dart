@@ -65,7 +65,7 @@ class TransactionHistory extends StatelessWidget {
                           transaction_history_data[index]["transaction_id"],
                           style: TextStyle(color: Colors.white),
                         ),
-                        Divider(
+                        const Divider(
                           color: Colors.white,
                         ),
                       ],
