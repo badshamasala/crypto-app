@@ -1,4 +1,5 @@
 import 'package:crypto_app/Screens/manage_wallet.dart';
+import 'package:crypto_app/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,17 +9,18 @@ class BaseCurrency extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
+          ColorConstants.backgroundColorDarkBlue,
           Colors.black,
-          Color.fromARGB(250, 31, 3, 56),
+          ColorConstants.backgroundColorPurple,
         ], begin: Alignment.topLeft, end: Alignment.bottomRight),
       ),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: const Text('Bse Currency'),
-          elevation: 5,
+          backgroundColor: Colors.transparent,
+          title: const Text('Base Currency'),
+          elevation: 2,
           leading: IconButton(
             onPressed: () {},
             icon: const Icon(Icons.arrow_back),
@@ -49,7 +51,7 @@ class BaseCurrency extends StatelessWidget {
                   base_currency_data[index]["title"],
                   style: const TextStyle(color: Colors.white, fontSize: 15),
                 ),
-                tileColor: Colors.grey[900],
+                tileColor: ColorConstants.listtitleColor,
                 subtitle: Text(
                   base_currency_data[index]["subTitle"],
                   style: const TextStyle(color: Colors.white),

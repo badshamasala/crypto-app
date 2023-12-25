@@ -7,53 +7,67 @@ class ThemeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text('Theme'),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [
+          ColorConstants.backgroundColorDarkBlue,
+          Colors.black,
+          ColorConstants.backgroundColorPurple,
+        ], begin: Alignment.topLeft, end: Alignment.bottomRight),
       ),
-      backgroundColor: Colors.black,
-      body: ListView.separated(
-        separatorBuilder: (context, index) => SizedBox(height: 0.5.h),
-        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
-        itemCount: theme_data.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            dense: true,
-            horizontalTitleGap: 0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(index == 1
-                        ? 0
-                        : index == 2
-                            ? 0
-                            : 10.sp),
-                    topRight: Radius.circular(index == 1
-                        ? 0
-                        : index == 2
-                            ? 0
-                            : 10.sp),
-                    bottomLeft: Radius.circular(index == 0
-                        ? 0
-                        : index == 1
-                            ? 0
-                            : 10.sp),
-                    bottomRight: Radius.circular(index == 0
-                        ? 0
-                        : index == 1
-                            ? 0
-                            : 10.sp))),
-            leading: Icon(
-              theme_data[index]["icon"],
-              color: Colors.white,
-            ),
-            title: Text(
-              theme_data[index]["title"],
-              style: const TextStyle(color: Colors.white, fontSize: 15),
-            ),
-            tileColor: ColorConstants.listtitleColor,
-          );
-        },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: const Text('Theme'),
+          leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.arrow_back),
+          ),
+          elevation: 2,
+        ),
+        backgroundColor: Colors.black,
+        body: ListView.separated(
+          separatorBuilder: (context, index) => SizedBox(height: 0.5.h),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+          itemCount: theme_data.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              dense: true,
+              horizontalTitleGap: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(index == 1
+                          ? 0
+                          : index == 2
+                              ? 0
+                              : 10.sp),
+                      topRight: Radius.circular(index == 1
+                          ? 0
+                          : index == 2
+                              ? 0
+                              : 10.sp),
+                      bottomLeft: Radius.circular(index == 0
+                          ? 0
+                          : index == 1
+                              ? 0
+                              : 10.sp),
+                      bottomRight: Radius.circular(index == 0
+                          ? 0
+                          : index == 1
+                              ? 0
+                              : 10.sp))),
+              leading: Icon(
+                theme_data[index]["icon"],
+                color: Colors.white,
+              ),
+              title: Text(
+                theme_data[index]["title"],
+                style: const TextStyle(color: Colors.white, fontSize: 15),
+              ),
+              tileColor: ColorConstants.listtitleColor,
+            );
+          },
+        ),
       ),
     );
   }

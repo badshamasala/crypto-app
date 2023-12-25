@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../colors.dart';
+
 class TransactionHistory extends StatelessWidget {
   const TransactionHistory({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
-          Color.fromARGB(248, 2, 2, 42),
+          ColorConstants.backgroundColorDarkBlue,
           Colors.black,
-          Color(0xffb17164F),
+          ColorConstants.backgroundColorPurple,
         ], begin: Alignment.topLeft, end: Alignment.bottomRight),
       ),
       child: Scaffold(
