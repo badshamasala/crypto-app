@@ -59,12 +59,29 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: TabBarView(children: [
             Container(
-              child: Center(
-                  child: Text(
-                "s",
-                style: TextStyle(color: Colors.white),
-              )),
-            ),
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                  ColorConstants.backgroundColorDarkBlue,
+                  Colors.black,
+                  Colors.black,
+                  ColorConstants.backgroundColorPurple,
+                ], begin: Alignment.topCenter, end: Alignment.bottomRight)),
+                child: GridView.builder(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                    itemCount: 10,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisExtent: 100.h,
+                        mainAxisSpacing: 10.h,
+                        crossAxisSpacing: 10.w),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                            color: ColorConstants.listtitleColor,
+                            borderRadius: BorderRadius.circular(8.sp)),
+                      );
+                    })),
             Container(
               decoration: const BoxDecoration(
                   gradient: LinearGradient(colors: [
