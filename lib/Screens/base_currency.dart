@@ -1,5 +1,5 @@
-import 'package:crypto_app/Screens/manage_wallet.dart';
 import 'package:crypto_app/colors.dart';
+import 'package:crypto_app/constant_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,54 +8,59 @@ class BaseCurrency extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
+    return Scaffold(
+      appBar: appBar("Base Currency", context),
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
           ColorConstants.backgroundColorDarkBlue,
           Colors.black,
+          Colors.black,
           ColorConstants.backgroundColorPurple,
-        ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: const Text('Base Currency'),
-          elevation: 2,
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.arrow_back),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        body: ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 10.0),
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 10,
-          ),
+        ], begin: Alignment.topCenter, end: Alignment.bottomRight)),
+        child: ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 24.h),
           itemCount: base_currency_data.length,
           itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 13.0.w,
-              ),
-              child: ListTile(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                leading: CircleAvatar(
-                  radius: 30.0,
-                  backgroundImage: base_currency_data[index]["img"],
-                  backgroundColor: Colors.transparent,
-                ),
-                title: Text(
-                  base_currency_data[index]["title"],
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
-                ),
-                tileColor: ColorConstants.listtitleColor,
-                subtitle: Text(
-                  base_currency_data[index]["subTitle"],
-                  style: const TextStyle(color: Colors.white),
-                ),
+            return Container(
+              decoration: BoxDecoration(
+                  color: ColorConstants.listtitleColor,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(index == 0 ? 8.sp : 0),
+                      topRight: Radius.circular(index == 0 ? 8.sp : 0),
+                      bottomLeft: Radius.circular(
+                          index == base_currency_data.length - 1 ? 8.sp : 0),
+                      bottomRight: Radius.circular(
+                          index == base_currency_data.length - 1 ? 8.sp : 0))),
+              child: Column(
+                children: [
+                  ListTile(
+                    dense: true,
+                    horizontalTitleGap: 5.sp,
+                    leading: CircleAvatar(
+                      radius: 15.sp,
+                      backgroundImage:
+                          NetworkImage(base_currency_data[index]["img"]),
+                      backgroundColor: Colors.transparent,
+                    ),
+                    title: Text(
+                      base_currency_data[index]["title"],
+                      style: const TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                    subtitle: Text(
+                      base_currency_data[index]["subTitle"],
+                      style: const TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Divider(
+                    thickness: 0.1.sp,
+                    height: 0.sp,
+                    color: Colors.grey,
+                    // endIndent: 10.sp,
+                    // indent: 10.sp,
+                  )
+                ],
               ),
             );
           },
@@ -65,10 +70,10 @@ class BaseCurrency extends StatelessWidget {
   }
 }
 
-List<Map<dynamic, dynamic>> base_currency_data = [
+List<Map<String, dynamic>> base_currency_data = [
   {
     "img":
-        "https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-cartoons-american-flag-png-image_867205.jpg",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/640px-Flag_of_Brazil.svg.png",
     "title": "USD",
     "subTitle": '\$',
   },

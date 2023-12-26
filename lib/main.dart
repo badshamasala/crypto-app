@@ -1,3 +1,4 @@
+import 'package:crypto_app/Screens/manage_wallet.dart';
 import 'package:crypto_app/Screens/settings.dart';
 import 'package:crypto_app/Screens/theme.dart';
 import 'package:crypto_app/Screens/transaction_history.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             ),
             // home: const OnboardingScreen(),
             // home: OnboardingScreen(),
-            home: SettingsScreen(),
+            home: OnboardingScreen(),
           );
         });
   }

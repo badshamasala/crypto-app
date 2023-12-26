@@ -1,5 +1,7 @@
+import 'package:crypto_app/constant_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../colors.dart';
 
@@ -8,77 +10,63 @@ class TransactionHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
+    return Scaffold(
+      appBar: appBar("Transaction History", context),
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
           ColorConstants.backgroundColorDarkBlue,
           Colors.black,
+          Colors.black,
           ColorConstants.backgroundColorPurple,
-        ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Transaction History',
-            style: TextStyle(fontSize: 20),
-          ),
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.arrow_back),
-          ),
-          elevation: 5.0,
-          backgroundColor: Colors.black,
-        ),
-        backgroundColor: Colors.transparent,
-        body: ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 10.0),
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 10,
-          ),
+        ], begin: Alignment.topCenter, end: Alignment.bottomRight)),
+        child: ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 24.h),
           itemCount: transaction_history_data.length,
           itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 13.0.w,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SingleChildScrollView(
-                    child: Column(
+            return Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           transaction_history_data[index]["date"],
-                          style: TextStyle(color: Colors.white),
+                          style: GoogleFonts.montserrat(
+                              fontSize: 10.sp, color: Color(0xffD8D8D8)),
                         ),
                         Text(
                           transaction_history_data[index]
                               ["transaction_type_sent"],
-                          style: TextStyle(color: Colors.white),
+                          style: GoogleFonts.montserrat(
+                              fontSize: 14.sp,
+                              color: Color(0xffD8D8D8),
+                              fontWeight: FontWeight.bold),
                         ),
                         Text(
                           transaction_history_data[index]
                               ["transaction_type_receive"],
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(height: 10.h),
-                        Text(
-                          transaction_history_data[index]["transaction_id"],
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        const Divider(
-                          color: Colors.white,
+                          style: GoogleFonts.montserrat(
+                              fontSize: 10.sp, color: Color(0xffD8D8D8)),
                         ),
                       ],
                     ),
-                  ),
-                  Text(
-                    transaction_history_data[index]["transaction_amount"],
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
+                    Text(
+                      transaction_history_data[index]["transaction_amount"],
+                      style: TextStyle(
+                          color: index.isEven ? Colors.red : Colors.green),
+                    ),
+                  ],
+                ),
+                Divider(
+                  color: Color(0xff424242),
+                  thickness: 1.sp,
+                  height: 20.h,
+                ),
+              ],
             );
           },
         ),

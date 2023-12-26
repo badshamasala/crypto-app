@@ -2,6 +2,7 @@ import 'package:crypto_app/colors.dart';
 import 'package:crypto_app/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EnterKeyScreen extends StatefulWidget {
   const EnterKeyScreen({Key? key}) : super(key: key);
@@ -17,8 +18,21 @@ class _EnterKeyScreenState extends State<EnterKeyScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Enter Key"),
-        backgroundColor: Colors.transparent,
+        toolbarHeight: 70.h,
+        titleSpacing: 0,
+        backgroundColor: ColorConstants.appBarBackgroundColor,
+        title: Text(
+          "Enter Key",
+          style: GoogleFonts.orbitron(
+              fontWeight: FontWeight.bold, fontSize: 16.sp),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+        elevation: 0,
         actions: [
           TextButton(
               onPressed: () {
@@ -29,43 +43,53 @@ class _EnterKeyScreenState extends State<EnterKeyScreen> {
                   ),
                 );
               },
-              child: Text(
-                "Next",
-                style: TextStyle(color: Colors.white),
-              ))
+              child: Text("Next",
+                  style: GoogleFonts.montserrat(
+                    color: Color(0xffD3D3D3),
+                  )))
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25.w),
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 35.h,
-            ),
-            TextField(
-              cursorColor: ColorConstants.primaryColor,
-              decoration: inputDecoration("Country"),
-              textCapitalization: TextCapitalization.words,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w400),
-              controller: null,
-              maxLines: 5,
-              keyboardType: TextInputType.name,
-              onChanged: (val) {},
-              onSubmitted: (value) {
-                FocusScope.of(context).unfocus();
-              },
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 35.h,
-            ),
-            Text(
-              "Passphrase is the kokw jokjow jokow jojow jow jow\njoo joj2 joj2 joij2e joije2 ije2 jj2e",
-              style: TextStyle(color: Colors.grey),
-            )
-          ],
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
+          ColorConstants.backgroundColorDarkBlue,
+          Colors.black,
+          Colors.black,
+          ColorConstants.backgroundColorPurple,
+        ], begin: Alignment.topCenter, end: Alignment.bottomRight)),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 25.w),
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 35.h,
+              ),
+              TextField(
+                cursorColor: ColorConstants.primaryColor,
+                decoration: inputDecoration("Country"),
+                textCapitalization: TextCapitalization.words,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w400),
+                controller: null,
+                maxLines: 5,
+                keyboardType: TextInputType.name,
+                onChanged: (val) {},
+                onSubmitted: (value) {
+                  FocusScope.of(context).unfocus();
+                },
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 35.h,
+              ),
+              Text(
+                "Enter your mnemonic which consists of between 12 and 24 words. The word needs to be entered in the correct order and separated.",
+                style: GoogleFonts.montserrat(
+                    color: Color(0xffDDDDDD), fontSize: 11.sp),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -86,15 +110,15 @@ class _EnterKeyScreenState extends State<EnterKeyScreen> {
           fontFamily: "Circular Std"),
       prefixStyle: null,
       border: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.grey),
+        borderSide: BorderSide(color: ColorConstants.primaryColor),
         borderRadius: BorderRadius.circular(5.sp),
       ),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.grey),
+        borderSide: BorderSide(color: ColorConstants.primaryColor),
         borderRadius: BorderRadius.circular(5.sp),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.grey),
+        borderSide: BorderSide(color: ColorConstants.primaryColor),
         borderRadius: BorderRadius.circular(5.sp),
       ),
     );
